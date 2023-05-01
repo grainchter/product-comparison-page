@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/product-comparison-page/static/css/main.17ce7b28.css",
-    "main.js": "/product-comparison-page/static/js/main.63c5eb25.js",
+    "main.js": "/product-comparison-page/static/js/main.4640067c.js",
     "static/js/787.b3c3db83.chunk.js": "/product-comparison-page/static/js/787.b3c3db83.chunk.js",
     "index.html": "/product-comparison-page/index.html",
     "main.17ce7b28.css.map": "/product-comparison-page/static/css/main.17ce7b28.css.map",
-    "main.63c5eb25.js.map": "/product-comparison-page/static/js/main.63c5eb25.js.map",
+    "main.4640067c.js.map": "/product-comparison-page/static/js/main.4640067c.js.map",
     "787.b3c3db83.chunk.js.map": "/product-comparison-page/static/js/787.b3c3db83.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.17ce7b28.css",
-    "static/js/main.63c5eb25.js"
+    "static/js/main.4640067c.js"
   ]
 }
