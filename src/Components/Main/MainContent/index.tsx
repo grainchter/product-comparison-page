@@ -29,15 +29,32 @@ let MainContent = (showElementsArr: any) => {
 
   let editArrayToShow = (value: boolean) => {
     if (value) {
-      let arr: Array<IPhoneData> = [];
+      let arr: Array<any> = [];
       let resultArr: Array<string> = [];
       let resultArrayShow: Array<any> = [];
 
       Object.assign(arr, showElementsArray);
 
+      //       DATA.forEach((el:any) => {
+      //         console.log(el);
+
+      //         arr.forEach((element:any, i:any) => {
+      // if (el.id === element.id) {
+      //   arr.splice(i, 1, el);
+
+      // }
+      //         })
+      //       })
+
+      // console.log(arr);
+
       arr.shift();
 
-      arr.forEach((element: any) => {
+      arr.forEach((element: IPhoneData) => {
+        if (element.id !== showElementsArray[0].id) {
+          resultArr.push("id");
+        }
+
         if (element.name !== showElementsArray[0].name) {
           resultArr.push("name");
         }
@@ -87,7 +104,7 @@ let MainContent = (showElementsArr: any) => {
         }
       });
 
-      showElementsArray.forEach((arrItem: any) => {
+      showElementsArray.forEach((arrItem: IPhoneData) => {
         let item: Array<any> = [];
         let title: Array<ITitleData> = [];
         let keysArr = Object.keys(arrItem).filter(function (f) {
@@ -118,10 +135,11 @@ let MainContent = (showElementsArr: any) => {
     }
   };
 
-  let changeElementByElement = (id: any, deletedItemId: any) => {
+  let changeElementByElement = (id: string, deletedItemId: string) => {
     setOpenPopup(!openPopup);
 
     let showArray: Array<IPhoneData> = [];
+    let resultShowArray: Array<IPhoneData> = [];
     let hideArray: Array<IPhoneData> = [];
     let newShowElement: any = {};
     let newHideElement: any = {};
@@ -141,6 +159,9 @@ let MainContent = (showElementsArr: any) => {
     Object.assign(showArray, showElementsArray);
     Object.assign(hideArray, hideElementsArray);
 
+    console.log(showArray);
+    console.log(hideArray);
+
     showElementsArray.forEach((item: any, i: any) => {
       if (item.id === newHideElement.id) {
         showArray.splice(i, 1, newShowElement);
@@ -153,7 +174,18 @@ let MainContent = (showElementsArr: any) => {
       }
     });
 
-    setShowElementsArray(showArray);
+    console.log(showArray);
+
+    showArray.forEach((el: any) => {
+      DATA.forEach((element: any) => {
+        if (el.id === element.id) {
+          resultShowArray.push(element);
+        }
+      });
+    });
+
+    setShowElementsArray(resultShowArray);
+
     setHideElementsArray(hideArray);
 
     dispatch(
@@ -161,8 +193,7 @@ let MainContent = (showElementsArr: any) => {
         values: {
           countElementsShow:
             showElementsArr.showElementsArr.values.hideData.countElementsShow,
-          showData: showArray,
-          showTitleData: [{}],
+          showData: resultShowArray,
           hideData: hideArray,
         },
       })
@@ -176,6 +207,8 @@ let MainContent = (showElementsArr: any) => {
   useEffect(() => {
     setShowElementsArray(showElementsArr.showElementsArr.values.showData);
     setHideElementsArray(showElementsArr.showElementsArr.values.hideData);
+    setShowComparison(false);
+    setShowTitle(TITLE_DATA);
   }, [showElementsArr]);
 
   return (
@@ -192,8 +225,8 @@ let MainContent = (showElementsArr: any) => {
             name=""
             id=""
             className={s.checkbox}
-            defaultChecked={showComparison}
-            onClick={() => {
+            checked={showComparison ? showComparison : false}
+            onChange={() => {
               if (!showComparison) {
                 setShowComparison(!showComparison);
                 editArrayToShow(!showComparison);
@@ -261,7 +294,7 @@ let MainContent = (showElementsArr: any) => {
               </div>
             ))}
           </div>
-          
+
           {showElementsArray &&
             showElementsArray.map((item: any, i: any) => (
               <div className={s.elements} key={i}>

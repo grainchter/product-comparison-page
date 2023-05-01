@@ -23,7 +23,6 @@ export interface IPhoneData {
     values: {
       countElementsShow?: number;
       showData?: Array<Object>;
-      showTitleData?: Array<Object>;
       hideData?: Array<Object>;
     };
   };

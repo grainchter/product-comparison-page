@@ -42,7 +42,6 @@ let MainHeader = () => {
         values: {
           countElementsShow: count,
           showData: arr,
-          showTitleData: [{}],
           hideData: hideArr,
         },
       })

@@ -7,7 +7,7 @@ let Modal = (props: any) => {
   const SCREENW = window.screen.width;
   const [showElementsArray, setShowElementsArray] = useState<Array<IPhoneData>>(
     props.hideElementsArray
-  );
+  ); 
 
   let eSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     let eValue = e.target.value;

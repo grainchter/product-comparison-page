@@ -5,7 +5,6 @@ interface storeState {
   values: object;
   countElementsShow: number;
   showData: Array<Object>;
-  showTitleData: Array<Object>;
   hideData: Array<Object>;
 }
 
@@ -13,12 +12,9 @@ const initialState = {
   values: {
     countElementsShow: 0,
     showData: {},
-    showTitleData: {},
     hideData: {},
   },
 } as storeState;
-
-
 
 const storeSlice = createSlice({
   name: "editValues",
