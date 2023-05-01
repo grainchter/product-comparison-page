@@ -35,19 +35,6 @@ let MainContent = (showElementsArr: any) => {
 
       Object.assign(arr, showElementsArray);
 
-      //       DATA.forEach((el:any) => {
-      //         console.log(el);
-
-      //         arr.forEach((element:any, i:any) => {
-      // if (el.id === element.id) {
-      //   arr.splice(i, 1, el);
-
-      // }
-      //         })
-      //       })
-
-      // console.log(arr);
-
       arr.shift();
 
       arr.forEach((element: IPhoneData) => {
@@ -159,8 +146,6 @@ let MainContent = (showElementsArr: any) => {
     Object.assign(showArray, showElementsArray);
     Object.assign(hideArray, hideElementsArray);
 
-    console.log(showArray);
-    console.log(hideArray);
 
     showElementsArray.forEach((item: any, i: any) => {
       if (item.id === newHideElement.id) {
@@ -173,8 +158,6 @@ let MainContent = (showElementsArr: any) => {
         hideArray.splice(i, 1, newHideElement);
       }
     });
-
-    console.log(showArray);
 
     showArray.forEach((el: any) => {
       DATA.forEach((element: any) => {
